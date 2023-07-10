@@ -1,0 +1,9 @@
+<div>
+    <label for="indexInput">Enter an index:</label>
+    <input id="indexInput" type="number" [(ngModel)]="inputIndex" min="1">
+    <button (click)="getNumber()">Get Number</button>
+    <div *ngIf="outputNumber !== null">
+      Number at index {{ inputIndex }} is {{ outputNumber }}
+    </div>
+  </div>
+  
