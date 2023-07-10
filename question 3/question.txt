@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Phone Number Form</title>
+  <script>
+    function addPhoneNumberField() {
+      var container = document.getElementById("phoneNumbersContainer");
+      var input = document.createElement("input");
+      input.type = "text";
+      input.name = "phoneNumber";
+      var deleteButton = document.createElement("button");
+      deleteButton.type = "button";
+      deleteButton.textContent = "Delete";
+      deleteButton.onclick = function() {
+        container.removeChild(input);
+        container.removeChild(deleteButton);
+      };
+      container.appendChild(input);
+      container.appendChild(deleteButton);
+    }
+
+    // submit the form and log phone numbers to the console
+    function submitForm() {
+      var phoneNumbers = [];
+      var inputs = document.getElementsByName("phoneNumber");
+      for (var i = 0; i < inputs.length; i++) {
+        var phoneNumber = inputs[i].value;
+        if (phoneNumber.trim() !== "") {
+          var obj = {};
+          obj["phoneNumber" + (i + 1)] = phoneNumber;
+          phoneNumbers.push(obj);
+        }
+      }
+      console.log(phoneNumbers);
+    }
+  </script>
+</head>
+<body>
+  <form>
+    <div id="phoneNumbersContainer">
+      <input type="text" name="phoneNumber">
+      <br>
+    </div>
+    <button type="button" onclick="addPhoneNumberField()">Add another phone number</button>
+    <br><br>
+    <button type="button" onclick="submitForm()">Submit</button>
+  </form>
+</body>
+</html>
